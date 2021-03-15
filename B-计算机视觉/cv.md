@@ -66,6 +66,28 @@ https://zhuanlan.zhihu.com/p/104236411
 
 ## Focal Loss
 
+## Cross Entropy Loss
+
+* Self-information:$I(X)=-log(P(X))$$
+
+* Entropy: Expectation of self-information:$H(X)=E_{X \sim P}[I(X)]$
+
+* KL Divergence: $D_{KL}(P||Q)=\sum_{x\in X}P(x)(logP(x)-log(Q(X))$
+
+````
+expectation of the log difference between the probability of data in the original distribution with the approximating distribution. 
+
+P=>real distribution Q=>our distribution
+````
+
+* Cross-Entropy: $H_P(Q)=-E_{X\sim P}log(Q(X))=-\sum_{x\in X}P(x)log(Q(x))$
+
+#### relationship
+
+$H_P(Q)-H(X)=D_P(Q)$
+
+
+
 # Activation Function
 
 ## ReLU
