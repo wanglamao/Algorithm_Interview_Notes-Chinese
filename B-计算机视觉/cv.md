@@ -101,3 +101,32 @@ dying ReLU:
 解决办法是用leakyRelu等；bias的初始值设为正数，比如1；减小learning rate。
 
 ## Leaky ReLU
+# IoU compute
+``` 
+box1=[x1,y1,x2,y2]
+box2=[x3,y3,x4,y4]
+tlx=max(x1,x3)
+tly=max(y1,y3)
+brx=min(x2,x4)
+bry=min(y2,y4)
+w=max(brx-tlx,0)
+h=max(bry-tly,0)
+
+IoU=w*h/(S1+S2-w*h)
+```
+# L_0, L_1, L_2, L_p
+## L_0
+### L_0 不是norm
+Definition of norm:
+1. homogeneous: $ \forall x \in \mathcal{R}^n,k\in \mathbb{R},\lVert kx\|=|k|\|x\| $
+2. triangle inequality
+3. positive define, $ if \|x\|=0,x=0$
+$L_0$不符合1，所以不是norm
+### 为什么不用L_0做优化
+首先L0缺少数学表示，使得L0的优化问题是NPhard，于是在相关领域（压缩感知）的优化问题中，会转化成L1，因为l1是the best convexification of the L0 "norm" ("the closest convex relaxation of best subset selection")
+## L_1
+优：解的稀疏性，从解空间解释
+弊：计算较昂贵，并不是处处可导
+## L_2
+优：算的快
+弊：不洗漱
